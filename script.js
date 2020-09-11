@@ -19,7 +19,7 @@ function hideLoading() {
 async function getQuote() {
     showLoading(); 
 
-    const proxy = "https://cors-anywhere.herokuapp.com/";
+    const proxy = "https://serene-atoll-57753.herokuapp.com/";
     const url = "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
 
     try {
