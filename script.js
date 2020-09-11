@@ -5,7 +5,19 @@ const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
+// Used to show the loading animation with page refresh and getting new quote.
+function showLoading() {
+    loader.hidden = false;
+    quoteContainer.hidden = true; 
+}
+
+function hideLoading() {
+    loader.hidden = !loader.hidden;
+    quoteContainer.hidden = !quoteContainer.hidden;
+}
+
 async function getQuote() {
+    showLoading(); 
 
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
@@ -26,6 +38,7 @@ async function getQuote() {
             quoteText.classList.remove("long-quote");
 
         quoteText.innerText = data.quoteText;
+        hideLoading()
     }
     catch(e) {
         console.log(e)
@@ -46,5 +59,4 @@ function tweetQuote() {
 newQuoteBtn.addEventListener("click", getQuote);
 twitterBtn.addEventListener("click", tweetQuote);
 
-
-getQuote()
+getQuote();
