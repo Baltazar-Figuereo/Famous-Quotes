@@ -25,7 +25,8 @@ async function getQuote() {
     try {
         const response = await fetch(proxy + url);
         const data = await response.json();
-                
+
+        // Check for an unknown author which is receive as a empty string
         if(data.quoteAuthor === "")
             authorText.innerText = "Unknown";
         else
@@ -55,7 +56,6 @@ function tweetQuote() {
 }
 
 //Event listeners
-
 newQuoteBtn.addEventListener("click", getQuote);
 twitterBtn.addEventListener("click", tweetQuote);
 
